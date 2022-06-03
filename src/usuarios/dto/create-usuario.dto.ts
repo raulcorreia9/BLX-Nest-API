@@ -1,14 +1,14 @@
-import { IsEmail, IsNotEmpty, IsString, Validate } from 'class-validator';
-import { Unique } from 'typeorm';
-import { Usuarios } from '../entities/usuario.entity';
+/* eslint-disable prettier/prettier */
+import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class CreateUsuarioDto {
   @IsString()
   @IsNotEmpty()
   nome: string;
 
-  @IsString()
+  @IsString()  
   @IsNotEmpty()
+  @MinLength(4)
   senha: string;
 
   @IsString()
