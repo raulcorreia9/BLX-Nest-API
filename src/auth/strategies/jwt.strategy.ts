@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Usuarios } from './../../entities/usuario.entity';
+import { Usuarios } from '../../usuarios/entities/usuario.entity';
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
 import { Strategy } from "passport-jwt"

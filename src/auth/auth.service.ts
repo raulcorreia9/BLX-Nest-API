@@ -8,7 +8,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { sign } from 'jsonwebtoken';
 import { Repository } from 'typeorm';
-import { Usuarios } from '../entities/usuario.entity';
+import { Usuarios } from '../usuarios/entities/usuario.entity';
 import { Request } from 'express';
 
 @Injectable()
@@ -39,7 +39,7 @@ export class AuthService {
     const authHeader = requests.headers.authorization;
 
     if (!authHeader) {
-      throw new BadRequestException('Bad request.');
+      throw new BadRequestException('Usuário não autenticado.');
     }
 
     //Destructering do authHeader = 'Bearer[0] meuToken[1]'

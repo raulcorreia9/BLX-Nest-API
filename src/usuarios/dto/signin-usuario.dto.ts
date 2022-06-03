@@ -9,5 +9,5 @@ export class SigninDto {
   @IsNotEmpty()
   @IsString()
   @MinLength(4)
-  password: string;
+  senha: string;
 }
