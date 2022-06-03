@@ -1,4 +1,6 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, Validate } from 'class-validator';
+import { Unique } from 'typeorm';
+import { Usuarios } from '../entities/usuario.entity';
 
 export class CreateUsuarioDto {
   @IsString()
@@ -13,7 +15,7 @@ export class CreateUsuarioDto {
   @IsNotEmpty()
   telefone: string;
 
-  @IsString()
+  @IsEmail()
   @IsNotEmpty()
   email: string;
 }
