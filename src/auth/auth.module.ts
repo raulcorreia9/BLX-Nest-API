@@ -1,10 +1,9 @@
-import { UsuariosModule } from '../usuarios/usuarios.module';
-import { forwardRef, Module } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { UsuariosService } from 'src/usuarios/usuarios.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Usuarios } from 'src/usuarios/entities/usuario.entity';
 

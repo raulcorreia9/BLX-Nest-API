@@ -1,8 +1,6 @@
 import { SigninDto } from './dto/signin-usuario.dto';
 import {
   BadRequestException,
-  forwardRef,
-  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -12,7 +10,7 @@ import { AuthService } from '../auth/auth.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Usuarios } from './entities/usuario.entity';
-import * as bcrypt from 'bcrypt'
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsuariosService {
