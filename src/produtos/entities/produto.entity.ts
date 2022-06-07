@@ -18,5 +18,5 @@ export class Produto {
   disponivel: boolean;
 
   @Column()
-  usuarioId: number;
+  usuarioId?: number;
 }

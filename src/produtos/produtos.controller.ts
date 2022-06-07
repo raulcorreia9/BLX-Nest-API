@@ -9,6 +9,7 @@ import {
   HttpCode,
   HttpStatus,
   UseGuards,
+  Request,
 } from '@nestjs/common';
 import { ProdutosService } from './produtos.service';
 import { CreateProdutoDto } from './dto/create-produto.dto';
@@ -22,8 +23,9 @@ export class ProdutosController {
   @Post()
   @UseGuards(AuthGuard('jwt'))
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() createProdutoDto: CreateProdutoDto) {
-    return this.produtosService.create(createProdutoDto);
+  create(@Request() req: any, @Body() createProdutoDto: CreateProdutoDto) {
+    console.log(' ID = ', req.user.id);
+    return this.produtosService.create(createProdutoDto, req.user.id);
   }
 
   @Get()

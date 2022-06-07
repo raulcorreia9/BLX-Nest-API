@@ -16,6 +16,5 @@ export class CreateProdutoDto {
   disponivel: boolean;
 
   @IsNumber()
-  @IsNotEmpty()
-  usuarioId: number;
+  usuarioId?: number;
 }

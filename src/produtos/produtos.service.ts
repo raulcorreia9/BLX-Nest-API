@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Usuarios } from 'src/usuarios/entities/usuario.entity';
 import { Repository } from 'typeorm';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
@@ -12,7 +13,8 @@ export class ProdutosService {
     private readonly produtosRepository: Repository<Produto>,
   ) {}
 
-  async create(createProdutoDto: CreateProdutoDto) {
+  async create(createProdutoDto: CreateProdutoDto, usuarioId: number) {
+    createProdutoDto.usuarioId = usuarioId;
     const produto = await this.produtosRepository.create({
       ...createProdutoDto,
     });
