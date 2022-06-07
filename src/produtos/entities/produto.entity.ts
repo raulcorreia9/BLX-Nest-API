@@ -11,10 +11,10 @@ export class Produto {
   @Column()
   descricao: string;
 
-  @Column({ nullable: true })
-  preco: string;
+  @Column({ nullable: true, type: 'float' })
+  preco: number;
 
-  @Column()
+  @Column({ nullable: false })
   disponivel: boolean;
 
   @Column()

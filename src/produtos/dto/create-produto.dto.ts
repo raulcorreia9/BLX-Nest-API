@@ -9,9 +9,8 @@ export class CreateProdutoDto {
   @IsNotEmpty()
   descricao: string;
 
-  @IsNotEmpty()
-  @IsString()
-  preco: string;
+  @IsNumber()
+  preco: number;
 
   @IsBoolean()
   disponivel: boolean;
