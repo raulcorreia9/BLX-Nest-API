@@ -35,6 +35,13 @@ export class ProdutosController {
     return this.produtosService.findAll();
   }
 
+  @Get('meusProdutos')
+  @UseGuards(AuthGuard('jwt'))
+  @HttpCode(HttpStatus.OK)
+  findByUserId(@Request() req: any) {
+    return this.produtosService.findByUserId(req.user);
+  }
+
   @Get(':id')
   @UseGuards(AuthGuard('jwt'))
   @HttpCode(HttpStatus.FOUND)

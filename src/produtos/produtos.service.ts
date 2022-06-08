@@ -23,7 +23,13 @@ export class ProdutosService {
   }
 
   async findAll() {
-    return this.produtosRepository.find();
+    return await this.produtosRepository.find();
+  }
+
+  async findByUserId(usuario: Usuarios) {
+    return await this.produtosRepository.find({
+      where: { usuarioId: usuario.id },
+    });
   }
 
   async findOne(id: number) {
