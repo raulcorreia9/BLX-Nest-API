@@ -4,10 +4,11 @@ import { Produto } from 'src/produtos/entities/produto.entity';
 import {
   BeforeInsert,
   Column,
+  CreateDateColumn,
   Entity,
-  JoinTable,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('usuarios')
@@ -31,6 +32,19 @@ export class Usuarios {
     cascade: true,
   })
   produtos: Produto[];
+
+  @CreateDateColumn({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
+  created_at: Date;
+
+  @UpdateDateColumn({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+  })
+  updated_at: Date;
 
   @BeforeInsert()
   async hashPassword() {

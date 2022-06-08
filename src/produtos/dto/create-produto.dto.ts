@@ -6,6 +6,7 @@ import {
   IsString,
 } from 'class-validator';
 import { Usuarios } from 'src/usuarios/entities/usuario.entity';
+import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 export class CreateProdutoDto {
   @IsString()
