@@ -13,8 +13,8 @@ export class ProdutosService {
     private readonly produtosRepository: Repository<Produto>,
   ) {}
 
-  async create(createProdutoDto: CreateProdutoDto, usuarioId: number) {
-    createProdutoDto.usuarioId = usuarioId;
+  async create(createProdutoDto: CreateProdutoDto, usuarioId: any) {
+    createProdutoDto.usuarioId = usuarioId.id;
     const produto = await this.produtosRepository.create({
       ...createProdutoDto,
     });

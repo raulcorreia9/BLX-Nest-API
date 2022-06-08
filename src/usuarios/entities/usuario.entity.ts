@@ -1,6 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Produto } from 'src/produtos/entities/produto.entity';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  JoinTable,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('usuarios')
 export class Usuarios {
@@ -18,6 +26,11 @@ export class Usuarios {
 
   @Column({ unique: true, nullable: false })
   email: string;
+
+  @OneToMany(type => Produto, produtos => produtos.usuarioId, {
+    cascade: true,
+  })
+  produtos: Produto[];
 
   @BeforeInsert()
   async hashPassword() {

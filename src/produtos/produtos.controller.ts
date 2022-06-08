@@ -25,7 +25,7 @@ export class ProdutosController {
   @HttpCode(HttpStatus.CREATED)
   create(@Request() req: any, @Body() createProdutoDto: CreateProdutoDto) {
     console.log(' ID = ', req.user.id);
-    return this.produtosService.create(createProdutoDto, req.user.id);
+    return this.produtosService.create(createProdutoDto, req.user);
   }
 
   @Get()

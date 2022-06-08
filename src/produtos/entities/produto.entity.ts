@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Usuarios } from 'src/usuarios/entities/usuario.entity';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinTable,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity('produtos')
 export class Produto {
@@ -17,6 +25,7 @@ export class Produto {
   @Column({ nullable: false })
   disponivel: boolean;
 
-  @Column()
-  usuarioId?: number;
+  @JoinColumn({ name: 'usuario_id' })
+  @ManyToOne(type => Usuarios, usuarioId => usuarioId.produtos)
+  usuarioId: Usuarios;
 }
