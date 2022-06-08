@@ -1,4 +1,10 @@
-import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { Usuarios } from 'src/usuarios/entities/usuario.entity';
 
 export class CreateProdutoDto {
@@ -16,6 +22,7 @@ export class CreateProdutoDto {
   @IsBoolean()
   disponivel: boolean;
 
+  @IsOptional()
   @IsNumber()
-  usuarioId?: Usuarios;
+  usuarioId: Usuarios;
 }
