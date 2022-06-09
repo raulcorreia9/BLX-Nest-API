@@ -1,4 +1,3 @@
-import { Min } from 'class-validator';
 import { Pedido } from 'src/pedidos/entities/pedido.entity';
 import { Usuarios } from 'src/usuarios/entities/usuario.entity';
 import {
@@ -9,6 +8,7 @@ import {
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToMany,
 } from 'typeorm';
 
 @Entity('produtos')
@@ -28,15 +28,11 @@ export class Produto {
   @Column({ nullable: false })
   disponivel: boolean;
 
-  @Column({ nullable: true })
-  @Min(1)
-  quantidade: number;
-
   @JoinColumn({ name: 'usuario_id' })
   @ManyToOne(() => Usuarios, usuarioId => usuarioId.produtos)
   usuarioId: Usuarios;
 
-  @ManyToOne(() => Pedido, pedido => pedido.produtos)
+  @ManyToMany(() => Pedido, (pedidos: Pedido) => pedidos.produtos)
   pedidos: Pedido[];
 
   @CreateDateColumn({

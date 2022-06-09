@@ -5,6 +5,9 @@ export class CreatePedidoDto {
   entrega: boolean;
 
   @IsNumber()
+  quantidade: number;
+
+  @IsNumber()
   numeroCasa: number;
 
   @IsString()
@@ -16,7 +19,6 @@ export class CreatePedidoDto {
   @IsString()
   cidade: string;
 
-  @IsOptional()
   @IsNumber()
   produtoId: number;
 }

@@ -1,3 +1,4 @@
+import { Min } from 'class-validator';
 import { Produto } from 'src/produtos/entities/produto.entity';
 import {
   Column,
@@ -17,6 +18,10 @@ export class Pedido {
   @Column({ nullable: false, default: true })
   entrega: boolean;
 
+  @Column({ nullable: true })
+  @Min(1)
+  quantidade: number;
+
   @Column()
   numeroCasa: number;
 
@@ -29,8 +34,20 @@ export class Pedido {
   @Column()
   cidade: string;
 
-  @JoinTable()
-  @ManyToMany(() => Produto, produtos => produtos.pedidos, { cascade: true })
+  @ManyToMany(() => Produto, (produtos: Produto) => produtos.pedidos, {
+    eager: true,
+  })
+  @JoinTable({
+    name: 'pedidos_produtos',
+    joinColumn: {
+      name: 'fk_pedidos',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'fk_produtos',
+      referencedColumnName: 'id',
+    },
+  })
   produtos: Produto[];
 
   @CreateDateColumn({
