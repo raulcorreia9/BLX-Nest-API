@@ -1,10 +1,11 @@
+import { Min } from 'class-validator';
+import { Pedido } from 'src/pedidos/entities/pedido.entity';
 import { Usuarios } from 'src/usuarios/entities/usuario.entity';
 import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
   ManyToOne,
-  JoinTable,
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
@@ -27,9 +28,16 @@ export class Produto {
   @Column({ nullable: false })
   disponivel: boolean;
 
+  @Column({ nullable: true })
+  @Min(1)
+  quantidade: number;
+
   @JoinColumn({ name: 'usuario_id' })
-  @ManyToOne(type => Usuarios, usuarioId => usuarioId.produtos)
+  @ManyToOne(() => Usuarios, usuarioId => usuarioId.produtos)
   usuarioId: Usuarios;
+
+  @ManyToOne(() => Pedido, pedido => pedido.produtos)
+  pedidos: Pedido[];
 
   @CreateDateColumn({
     type: 'timestamp',

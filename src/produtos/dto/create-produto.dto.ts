@@ -23,6 +23,9 @@ export class CreateProdutoDto {
   @IsBoolean()
   disponivel: boolean;
 
+  @IsNumber()
+  quantidade: number;
+
   @IsOptional()
   @IsNumber()
   usuarioId: Usuarios;
