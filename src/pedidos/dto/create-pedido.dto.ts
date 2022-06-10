@@ -1,4 +1,5 @@
 import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
+import { Produto } from 'src/produtos/entities/produto.entity';
 
 export class CreatePedidoDto {
   @IsBoolean()
@@ -19,6 +20,6 @@ export class CreatePedidoDto {
   @IsString()
   cidade: string;
 
-  @IsNumber()
-  produtoId: number;
+  @IsOptional()
+  produtos: Produto[];
 }

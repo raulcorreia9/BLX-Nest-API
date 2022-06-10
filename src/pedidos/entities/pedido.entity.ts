@@ -35,7 +35,7 @@ export class Pedido {
   cidade: string;
 
   @ManyToMany(() => Produto, (produtos: Produto) => produtos.pedidos, {
-    eager: true,
+    eager: true
   })
   @JoinTable({
     name: 'pedidos_produtos',
