@@ -12,7 +12,7 @@ export class PedidosService {
     private readonly pedidosRepository: Repository<Pedido>,
   ) {}
 
-  async create(createPedidoDto: CreatePedidoDto) {
+  async create(createPedidoDto: CreatePedidoDto, usuarioId: any) {
     const pedido = await this.pedidosRepository.create({
       ...createPedidoDto,
     });
@@ -21,6 +21,10 @@ export class PedidosService {
   }
 
   async findAll() {
+    return this.pedidosRepository.find();
+  }
+
+  async findPedidosByUser() {
     return this.pedidosRepository.find();
   }
 
