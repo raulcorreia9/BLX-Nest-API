@@ -1,11 +1,14 @@
 import { Min } from 'class-validator';
 import { Produto } from 'src/produtos/entities/produto.entity';
+import { Usuarios } from 'src/usuarios/entities/usuario.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -33,6 +36,10 @@ export class Pedido {
 
   @Column()
   cidade: string;
+
+  @JoinColumn({ name: 'comprador_id' })
+  @ManyToOne(() => Usuarios, usuarioId => usuarioId.pedidos)
+  usuarioId: Usuarios;
 
   @ManyToMany(() => Produto, (produtos: Produto) => produtos.pedidos, {
     eager: true

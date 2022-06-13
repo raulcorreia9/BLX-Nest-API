@@ -1,5 +1,5 @@
-/* eslint-disable prettier/prettier */
 import * as bcrypt from 'bcrypt';
+import { Pedido } from 'src/pedidos/entities/pedido.entity';
 import { Produto } from 'src/produtos/entities/produto.entity';
 import {
   BeforeInsert,
@@ -32,6 +32,11 @@ export class Usuarios {
     cascade: true,
   })
   produtos: Produto[];
+
+  @OneToMany(() => Pedido, pedidos => pedidos.usuarioId, {
+    cascade: true,
+  })
+  pedidos: Pedido[];
 
   @CreateDateColumn({
     type: 'timestamp',

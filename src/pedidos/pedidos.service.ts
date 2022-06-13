@@ -13,6 +13,7 @@ export class PedidosService {
   ) {}
 
   async create(createPedidoDto: CreatePedidoDto, usuarioId: any) {
+    createPedidoDto.usuarioId = usuarioId.id;
     const pedido = await this.pedidosRepository.create({
       ...createPedidoDto,
     });
@@ -24,8 +25,12 @@ export class PedidosService {
     return this.pedidosRepository.find();
   }
 
-  async findPedidosByUser() {
-    return this.pedidosRepository.find();
+  async findComprasUsuario(usuarioId: any) {
+    return this.pedidosRepository.find({
+      where: {
+        usuarioId: usuarioId.id
+      }
+    });
   }
 
   async findOne(id: number) {
