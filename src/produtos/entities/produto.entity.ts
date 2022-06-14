@@ -11,7 +11,7 @@ import {
   ManyToMany,
 } from 'typeorm';
 
-@Entity('produtos')
+@Entity({ name:'produtos', schema:'public' })
 export class Produto {
   @PrimaryGeneratedColumn()
   id: number;
@@ -28,8 +28,11 @@ export class Produto {
   @Column({ nullable: false })
   disponivel: boolean;
 
+  // @Column()
+  // usuario_id: number;
+
+  @ManyToOne(type => Usuarios, usuarioId => usuarioId.produtos, { eager: true })
   @JoinColumn({ name: 'usuario_id' })
-  @ManyToOne(() => Usuarios, usuarioId => usuarioId.produtos)
   usuarioId: Usuarios;
 
   @ManyToMany(() => Pedido, (pedidos: Pedido) => pedidos.produtos)

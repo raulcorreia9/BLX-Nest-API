@@ -11,7 +11,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('usuarios')
+@Entity({ name: 'usuarios', schema: 'public' })
 export class Usuarios {
   @PrimaryGeneratedColumn()
   id: number;
