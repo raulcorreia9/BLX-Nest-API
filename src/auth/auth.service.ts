@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { JwtPayload } from './models/jwt-payload.model';
 import {
   BadRequestException,

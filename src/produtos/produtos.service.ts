@@ -26,6 +26,23 @@ export class ProdutosService {
     return await this.produtosRepository.find();
   }
 
+  async findProdutos(id: number) {
+    // const lista = [];
+    
+    // for(let i = 0; i < produtos.length; i++) {
+    //   return await this.produtosRepository.find({
+    //     where: { produtos[i].produtos.usuarioId.id }
+    //   })
+    // }
+
+    return await this.produtosRepository.find({
+      where: {
+        id: id,
+      }
+    })
+    
+  }
+
   async findByUserId(usuario: Usuarios) {
     return await this.produtosRepository.find({
       where: { usuarioId: usuario.id },

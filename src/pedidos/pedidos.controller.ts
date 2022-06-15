@@ -41,6 +41,13 @@ export class PedidosController {
     return this.pedidosService.findComprasUsuario(req.user);
   }
 
+  @Get('minhasVendas')
+  @UseGuards(AuthGuard('jwt'))
+  @HttpCode(HttpStatus.OK)
+  findVendasUsuario(@Request() req: any) {
+    return this.pedidosService.findVendasUsuario(req.user);
+  }
+
   @Get(':id')
   @UseGuards(AuthGuard('jwt'))
   @HttpCode(HttpStatus.OK)

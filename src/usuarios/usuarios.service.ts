@@ -50,7 +50,9 @@ export class UsuariosService {
   }
 
   async signin(signDto: SigninDto) {
-    const user = await this.findByEmail(signDto.email);
+    const user = await this.usuariosRepository.findOne({ where: {email: signDto.email },
+      select: ['id', 'email', 'nome', 'senha']
+    });
     
     if(!user) {
       throw new NotFoundException('Email não cadastrado.');

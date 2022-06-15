@@ -19,7 +19,7 @@ export class Usuarios {
   @Column()
   nome: string;
 
-  @Column()
+  @Column({ select: false })
   senha: string;
 
   @Column()
