@@ -17,21 +17,6 @@ export class PedidosService {
   ) {}
 
   async create(createPedidoDto: CreatePedidoDto, usuarioId: any) {
-    const produtos = createPedidoDto.produtos;
-    const vendedorId = [];
-    console.log(produtos);
-    const produtosVendedor = [];
-
-    for(let i = 0; i < produtos.length; i++) {
-      console.log(produtos[i].id);
-      const result = await this.produtoService.findOne(produtos[i].id)
-      produtosVendedor.push(result);
-      vendedorId.push = produtosVendedor[i].usuarioId.id;
-    }
-
-    console.log('Produtos Vendedor = ', produtosVendedor);
-    console.log('Vendedor ID = ', vendedorId)
-
     createPedidoDto.usuarioId = usuarioId.id;
     // const produtosVendedor = await this.produtoService.findOne();
 
