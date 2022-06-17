@@ -1,5 +1,4 @@
-import { ProdutosService } from './../produtos/produtos.service';
-import { BadRequestException, Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { getRepository, Repository } from 'typeorm';
 import { CreatePedidoDto } from './dto/create-pedido.dto';
