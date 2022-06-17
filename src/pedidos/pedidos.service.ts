@@ -13,8 +13,6 @@ export class PedidosService {
   constructor(
     @InjectRepository(Pedido)
     private readonly pedidosRepository: Repository<Pedido>,
-
-    private readonly produtoService: ProdutosService,
   ) {}
 
   async create(createPedidoDto: CreatePedidoDto, usuarioId: any) {
